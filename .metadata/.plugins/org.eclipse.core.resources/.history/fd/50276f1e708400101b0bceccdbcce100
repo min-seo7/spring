@@ -1,7 +1,0 @@
-package com.yedam;
-
-public class CarTest {
-	public static void main(String[] args) { /* 최초 진입점 main*/
-		Car car = new Car();
-	}
-}

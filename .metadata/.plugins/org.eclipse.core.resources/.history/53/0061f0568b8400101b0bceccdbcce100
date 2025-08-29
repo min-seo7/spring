@@ -1,9 +1,0 @@
-package com.example.demo;
-
-import org.springframework.stereotype.Controller;
-
-@Controller //aka.노드의 라우터랑 비슷
-public class HomeController {
-
-	@GetMapping("/")
-}
