@@ -1,5 +1,0 @@
-package com.yedam.inter;
-
-public interface Animal {
-
-}

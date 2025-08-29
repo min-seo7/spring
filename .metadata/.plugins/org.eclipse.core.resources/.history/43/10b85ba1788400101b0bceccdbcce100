@@ -1,6 +1,0 @@
-package com.yedam.inter;
-
-//인터페이스 용도: 개발표준을 정의
-public interface Animal {
-	public void sound();  //public 생략가능
-}

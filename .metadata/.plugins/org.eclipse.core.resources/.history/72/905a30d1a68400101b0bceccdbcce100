@@ -1,8 +1,0 @@
-package com.example.demo.emp.mapper;
-
-public class EmpVO {
-	String first_name;  //마이바티스 설정안해서 컬럼명 그대로
-	String last_name;
-	
-
-}

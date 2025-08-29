@@ -1,7 +1,0 @@
-package com.yedam.collect;
-
-public class DeptVO {
-	private int deptno;
-	private String dname;
-	private int location;
-}
