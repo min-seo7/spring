@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ExceptionTest" project="java_review" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="com.yedam.ExceptionTest" time="125.554" displayname="ExceptionTest" uniqueid="[engine:junit-jupiter]/[class:com.yedam.ExceptionTest]">
+    <testcase name="test" classname="com.yedam.ExceptionTest" time="125.554" displayname="test()" uniqueid="[engine:junit-jupiter]/[class:com.yedam.ExceptionTest]/[method:test()]"/>
+  </testsuite>
+</testrun>

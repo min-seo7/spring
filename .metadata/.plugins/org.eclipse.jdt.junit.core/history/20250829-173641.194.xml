@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="EmpMapperTest" project="ex01" tests="1" started="1" failures="0" errors="1" ignored="0">
+  <testsuite name="com.example.demo.EmpMapperTest" time="0.902" displayname="EmpMapperTest" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.EmpMapperTest]">
+    <testcase name="selectEmpById" classname="com.example.demo.EmpMapperTest" time="0.902" displayname="단건조회" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.EmpMapperTest]/[method:selectEmpById()]">
+      <error>org.springframework.jdbc.BadSqlGrammarException: &#13;
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: ORA-00904: "EMPLOYEES_ID": 부적합한 식별자
+&#13;
+https://docs.oracle.com/error-help/db/ora-00904/&#13;
+### The error may exist in file [C:\eGovFrameDev-4.3.1-64bit\workspace-egov\ex01\target\classes\mappers\EmpMapper.xml]&#13;
+### The error may involve com.example.demo.emp.mapper.EmpMapper.selectEmpById-Inline&#13;
+### The error occurred while setting parameters&#13;
+### SQL: SELECT EMPLOYEE_ID,     FIRST_NAME,     LAST_NAME,     EMAIL,     PHONE_NUMBER,     HIRE_DATE,     JOB_ID,     SALARY,     COMMISSION_PCT,     MANAGER_ID,     DEPARTMENT_ID   FROM EMPLOYEES   WHERE EMPLOYEES_ID = ?&#13;
+### Cause: java.sql.SQLSyntaxErrorException: ORA-00904: "EMPLOYEES_ID": 부적합한 식별자
+&#13;
+https://docs.oracle.com/error-help/db/ora-00904/
+; bad SQL grammar []&#13;
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:246)&#13;
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107)&#13;
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:95)&#13;
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:347)&#13;
+	at jdk.proxy2/jdk.proxy2.$Proxy65.selectOne(Unknown Source)&#13;
+	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:154)&#13;
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:87)&#13;
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141)&#13;
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)&#13;
+	at jdk.proxy2/jdk.proxy2.$Proxy66.selectEmpById(Unknown Source)&#13;
+	at com.example.demo.EmpMapperTest.selectEmpById(EmpMapperTest.java:37)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)&#13;
+Caused by: java.sql.SQLSyntaxErrorException: ORA-00904: "EMPLOYEES_ID": 부적합한 식별자
+&#13;
+https://docs.oracle.com/error-help/db/ora-00904/&#13;
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:715)&#13;
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:615)&#13;
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1372)&#13;
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:969)&#13;
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:237)&#13;
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:524)&#13;
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:298)&#13;
+	at oracle.jdbc.driver.T4CPreparedStatement.executeForDescribe(T4CPreparedStatement.java:1255)&#13;
+	at oracle.jdbc.driver.OracleStatement.prepareDefineBufferAndExecute(OracleStatement.java:1413)&#13;
+	at oracle.jdbc.driver.OracleStatement.executeMaybeDescribe(OracleStatement.java:1287)&#13;
+	at oracle.jdbc.driver.OracleStatement.executeSQLSelect(OracleStatement.java:1844)&#13;
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1620)&#13;
+	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:3973)&#13;
+	at oracle.jdbc.driver.OraclePreparedStatement.doExecute(OraclePreparedStatement.java:4447)&#13;
+	at oracle.jdbc.driver.OraclePreparedStatement.execute(OraclePreparedStatement.java:4433)&#13;
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.execute(OraclePreparedStatementWrapper.java:1029)&#13;
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)&#13;
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)&#13;
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:65)&#13;
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:80)&#13;
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:65)&#13;
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:336)&#13;
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:158)&#13;
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:110)&#13;
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:90)&#13;
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:154)&#13;
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)&#13;
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:142)&#13;
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:75)&#13;
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)&#13;
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:333)&#13;
+	... 10 more&#13;
+Caused by: Error : 904, Position : 198, SQL = SELECT EMPLOYEE_ID,
+				FIRST_NAME,
+				LAST_NAME,
+				EMAIL,
+				PHONE_NUMBER,
+				HIRE_DATE,
+				JOB_ID,
+				SALARY,
+				COMMISSION_PCT,
+				MANAGER_ID,
+				DEPARTMENT_ID
+		FROM EMPLOYEES
+		WHERE EMPLOYEES_ID = :1 , Original SQL = SELECT EMPLOYEE_ID,
+				FIRST_NAME,
+				LAST_NAME,
+				EMAIL,
+				PHONE_NUMBER,
+				HIRE_DATE,
+				JOB_ID,
+				SALARY,
+				COMMISSION_PCT,
+				MANAGER_ID,
+				DEPARTMENT_ID
+		FROM EMPLOYEES
+		WHERE EMPLOYEES_ID = ?, Error Message = ORA-00904: "EMPLOYEES_ID": 부적합한 식별자
+&#13;
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:723)&#13;
+	... 41 more&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+</testrun>

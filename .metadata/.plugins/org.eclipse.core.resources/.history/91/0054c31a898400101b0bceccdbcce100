@@ -1,0 +1,12 @@
+package com.yedam.collect;
+
+import lombok.Builder;
+import lombok.Data;
+
+@Builder  //인스턴스 생성시 new 사용없이 바로 가능. 
+@Data
+public class DeptVO {
+	private int deptno;
+	private String dname;
+	private int location;
+}

@@ -1,0 +1,11 @@
+package com.example.demo.emp.mapper;
+
+import lombok.Data;
+
+@Data
+public class EmpVO {
+	private String first_name;  //마이바티스 별도설정안해서 컬럼명 그대로
+	private String last_name;
+	
+
+}

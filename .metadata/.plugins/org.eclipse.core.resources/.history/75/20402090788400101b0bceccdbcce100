@@ -1,0 +1,17 @@
+package com.yedam.inter;
+
+import org.junit.jupiter.api.Test;
+/*
+ * 다형성: 부모타입(animal)의 참조변수가 + 자식(cat, dog)객체를 참조
+ * 
+ * */
+
+public class AnimalTest {
+	
+	@Test
+	public void test() {  //다형성
+		Animal animal = new Dog();
+		animal.sound();
+	}	
+	
+}

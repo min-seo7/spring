@@ -1,0 +1,9 @@
+package com.yedam.collect;
+
+public class EmpVO {
+	//필드선언
+	
+	//생성자 [empno, ename,] 
+	
+	
+}

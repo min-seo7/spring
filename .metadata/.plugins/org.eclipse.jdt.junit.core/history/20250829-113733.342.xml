@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ListTest" project="java_review" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="com.yedam.collect.ListTest" time="0.01" displayname="ListTest" uniqueid="[engine:junit-jupiter]/[class:com.yedam.collect.ListTest]">
+    <testcase name="test1" classname="com.yedam.collect.ListTest" time="0.01" displayname="test1()" uniqueid="[engine:junit-jupiter]/[class:com.yedam.collect.ListTest]/[method:test1()]"/>
+  </testsuite>
+</testrun>

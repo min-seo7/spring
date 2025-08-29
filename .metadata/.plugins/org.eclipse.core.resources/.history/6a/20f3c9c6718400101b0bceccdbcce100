@@ -1,0 +1,32 @@
+package com.yedam;
+
+/*
+ * 클래스 = 설계도 : 속성(필드) & 행위(메서드)구성
+ * 1. 클래스 선언
+ * 2. 인스턴스(객체) 생성 = 메모리 영역 할당
+ * 3. 인스턴스 사용
+ * 
+ * */
+public class Car {
+	
+	String model;
+	
+	//생성자 - 객체 생성시 호출되는 메서드, 필드초기화
+	//생성자는 return Type없음.
+	//생성시에 값을 넣어서 생성(=/=기본생성자)
+	
+	public Car(String model) {
+		this.model = model;
+	}
+	
+//	//인수가 없는 기본생성자 
+//	public Car() {}
+	
+		
+	public void drive() {
+		System.out.println(model + "운행");
+	}
+
+	
+	
+}

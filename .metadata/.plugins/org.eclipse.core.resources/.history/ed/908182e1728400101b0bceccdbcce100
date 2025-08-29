@@ -1,0 +1,13 @@
+package com.yedam;
+
+public class CarTest {
+	public static void main(String[] args) { /* 최초 진입점 알려줌. main*/
+		Car car1 = new Car("쏘렌토"); 
+		Car car2 = new Car("카니발");
+		
+		car1.drive();		
+		car2.drive();
+		
+		System.out.println(car1.hashCode() == car2.hashCode());
+	}
+}

@@ -1,0 +1,12 @@
+package com.yedam.inter;
+
+import org.junit.jupiter.api.Test;
+
+public class AnimalTest {
+	
+	@Test
+	public void test() {
+		Cat cat = new Cat();
+		cat.sound();
+	}
+}

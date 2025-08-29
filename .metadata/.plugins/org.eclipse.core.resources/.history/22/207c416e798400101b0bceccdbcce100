@@ -1,0 +1,48 @@
+package com.yedam;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+public class CarTest {
+	
+	@Test
+	
+	
+	
+	
+	@DisplayName("객체생성")
+	@Test
+	 public void  test2(){ 
+		//생성자 활용 생성.
+		Car car1 = new Car("쏘렌토"); 
+		Car car2 = new Car("카니발");
+			
+		//System.out.println(car1 == car2);
+		//일반적으로 생성할때는 각각 다른 영역에서 생성됨으로 false
+		//싱글톤일 경우 동일한 영역에 생성되고 동일한 값으로 (쏘랜토 출력됨) true
+		
+		assertEquals(car1, car2); 		
+	}
+	
+
+	@DisplayName("싱글톤")
+	@Test
+	 public void  test(){ 
+		//생성자 활용 생성.
+		//Car car1 = new Car("쏘렌토"); 
+		//Car car2 = new Car("카니발");
+		
+		//싱클톤 사용
+		Car car1 = Car.getInstance("쏘렌토"); 
+		Car car2 = Car.getInstance("카니발");
+		
+		
+		//System.out.println(car1 == car2);
+		//일반적으로 생성할때는 각각 다른 영역에서 생성됨으로 false
+		//싱글톤일 경우 동일한 영역에 생성되고 동일한 값으로 (쏘랜토 출력됨) true
+		
+		assertEquals(car1, car2); 		
+	}
+}

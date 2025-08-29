@@ -1,0 +1,8 @@
+package com.yedam;
+
+public class CarTest {
+	public static void main(String[] args) { /* 최초 진입점 알려줌. main*/
+		Car car = new Car("쏘렌토"); 
+		car.drive();
+	}
+}

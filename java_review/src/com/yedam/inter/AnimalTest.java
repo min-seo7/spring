@@ -1,0 +1,17 @@
+package com.yedam.inter;
+
+import org.junit.jupiter.api.Test;
+/*
+ * 다형성: 부모타입(animal)의 참조변수가 + 자식(cat, dog)객체를 참조
+ * 참조하는 자식객채(캣 or 도그)의 메서드를 호출 -> 실행결과 다르게 보임 
+ * */
+
+public class AnimalTest {
+	
+	@Test
+	public void test() {  //다형성
+		Animal animal = new Dog();  //인터페이스 사용시 dog나 cat만 변경해서 사용가능. 
+		animal.sound();  //참조하는 대상에 따라 메소드가 실행됨. 
+	}	
+	
+}

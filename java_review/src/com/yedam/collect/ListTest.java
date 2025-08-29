@@ -1,0 +1,51 @@
+package com.yedam.collect;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+public class ListTest {
+	@DisplayName("Map")
+	@Test
+	public void test3() {
+		//검색
+		Map<String, String> map = new HashMap<>();
+		map.put("100", "홍길동");
+		map.put("101", "김유신");
+		
+		map.get("100"); //검색속도: 1(해당 키값을 바로 찾아가기때문에 한번에 찾아감)  list 속도: n (해당 값이 나올때까지 진행)
+	}
+		
+	@DisplayName("List")
+	@Test
+	public void test1() { //List는 중복값허용
+		List<String> list = new ArrayList<>();
+		list.add("사과");
+		list.add("바나나");
+		list.add("사과");
+		
+		assertEquals(list.size(), 3);
+		
+		Set<String> set = new HashSet<>(list);   //=> list를 set으로 변환가능
+		assertEquals(list.size(), 2);  //list가 허용했던 중복값을 제거함. 
+	}
+	@DisplayName("Set")
+	@Test
+	public void test2() { //Set은 중복값 허용xxxxx
+		Set<String> list = new HashSet<>();
+		list.add("사과");
+		list.add("바나나");
+		list.add("사과");
+		
+		assertEquals(list.size(), 2);
+		
+	}
+}

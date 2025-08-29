@@ -1,0 +1,12 @@
+package com.example.demo.emp.mapper;
+
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface EmpMapper {  //EmpMapper 이름과 인터페이스 이름 동일하게 일치
+	List<Map<String, Object>> selectEmp();
+	
+}

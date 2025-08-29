@@ -1,0 +1,12 @@
+package com.yedam;
+
+/*
+ * 클래스 = 설계도 : 속성(필드) & 행위(메서드)구성
+ * */
+public class Car {
+	String model;
+	public void drive() {
+		System.out.println("운행");
+	}
+	
+}

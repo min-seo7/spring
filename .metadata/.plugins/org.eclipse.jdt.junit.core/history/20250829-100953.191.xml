@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="CarTest (1)" project="java_review" tests="2" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="com.yedam.CarTest" incomplete="true" displayname="CarTest" uniqueid="[engine:junit-jupiter]/[class:com.yedam.CarTest]">
+    <testcase name="test" classname="com.yedam.CarTest" incomplete="true" displayname="test()" uniqueid="[engine:junit-jupiter]/[class:com.yedam.CarTest]/[method:test()]"/>
+    <testcase name="test2" classname="com.yedam.CarTest" incomplete="true" displayname="test2()" uniqueid="[engine:junit-jupiter]/[class:com.yedam.CarTest]/[method:test2()]"/>
+  </testsuite>
+</testrun>

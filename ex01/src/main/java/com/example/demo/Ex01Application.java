@@ -1,0 +1,16 @@
+package com.example.demo;
+
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@MapperScan
+//@MapperScan: 특정 패키지에 있는 Mapper 인터페이스들을 자동으로 스캔하고 등록하는 역할
+@SpringBootApplication
+public class Ex01Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Ex01Application.class, args);
+	}
+
+}

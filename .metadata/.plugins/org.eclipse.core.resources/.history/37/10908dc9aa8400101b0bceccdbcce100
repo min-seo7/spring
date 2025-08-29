@@ -1,0 +1,21 @@
+package com.example.demo.emp.web;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.example.demo.emp.mapper.EmpMapper;
+
+@Controller
+public class EmpController {
+	
+	@Autowired EmpMapper empMapper;  //new 생성할 필요xxxx, 객체가 주입됨.  
+	
+	@GetMapping("empList")
+	public String empList(Model model) {
+		model.addAttribute("empList", empMapper.selectEmp());
+
+		return "empList";   //empList.html페이지 생성해서 결과 받아야함
+	}
+}
