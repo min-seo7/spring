@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<script th:inline="javascript">
+	function gopage(p) {
+		frmSearch.page.value = p;
+		frmSearch.submit();
+	}
+	function init() {
+		frmSearch.title.value = ""
+		frmSearch.bno.value = ""
+	}
+</script>
+</head>
+<body>
+<h1>게시판정보</h1>
+
+<!--  검색 폼 시작 -->
+	<form name="frmSearch" th:object="${boardVO}" action="boardList">
+	<input type="hidden" name="page">
+		title<input name="title" th:value="*{title}">
+		bno<input name="bno" th:value="*{bno}">
+		<button type="button" onclick="gopage(1)">검색</button>
+		<button type="button" onclick="init()">초기화</button>
+	</form>
+    
+    <!--  검색 폼 끝 -->
+    <table class="table">
+		<tr>
+			<th>No</th>
+			<th>title</th>
+			<th>writer</th>
+			<th>regDate</th>
+			<th>updateDate</th>
+			<th>content</th>
+		</tr>
+		<tr th:each="board : ${boardList}">
+			<td th:text="${board.bno}"></td>
+			<td><a th:href="@{/replyList(bno=${board.bno})}" th:text="${board.title}"></a></td>
+			<td th:text="${board.writer}"></td>
+			<td th:text="${board.regDate}"></td>
+			<td th:text="${board.updateDate}"></td>
+			<td th:text="${board.content}"></td>
+		</tr>
+	</table>
+	
+	<!-- 페이징 시작 -->
+	<nav aria-label="...">
+	  <ul class="pagination">
+	    <li class="page-item" th:if="${paging.startPage} > 1 ">
+	        <a class="page-link" th:href="|javascript:gopage(${paging.startPage-1})|">Previous</a>
+		</li>
+
+	    <li th:each="num : *{#numbers.sequence(paging.startPage, paging.endPage)}"
+			class="page-item" th:addclass="${num} == ${paging.page} ? active">
+	        <a class="page-link" th:href="|javascript:gopage(${num})|" th:text="${num}">2</a>
+		</li>
+	    
+	    <li class="page-item" th:classappend="${paging.endPage} <= ${paging.lastPage} ? disabled">
+	        <a class="page-link" th:href="|javascript:gopage(${paging.endPage+1})|">Next</a>
+		</li>
+	  </ul>
+	</nav>
+	<!-- 페이징 종료 -->
+</body>
+</html>

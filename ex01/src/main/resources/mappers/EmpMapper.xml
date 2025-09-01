@@ -2,66 +2,94 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.emp.mapper.EmpMapper">
 
-<!-- 전체조회(페이징, 검색 -->
-<select id="selectEmp" resultType="empVO">   
-		SELECT EMPLOYEE_ID,
-				FIRST_NAME,
-				LAST_NAME,
-				EMAIL,
-				PHONE_NUMBER,
-				HIRE_DATE,
-				JOB_ID,
-				SALARY,
-				COMMISSION_PCT,
-				MANAGER_ID,
-				DEPARTMENT_ID
-		FROM EMPLOYEES
+<sql id="criteria">
+	<where>
+		<if test="firstName != null">
+	    	UPPER(first_name) LIKE '%' || UPPER(#{firstName}) || '%'
+	    </if>
+	    <if test="departmentId != null">
+	    	 AND DEPARTMENT_ID = #{departmentId}
+	    </if>
+	</where>
+</sql>
+
+<!-- 건수조회 -->
+<select id="selectCount" resultType="Long">
+	SELECT count(*)
+	FROM   EMPLOYEES
+	<include refid='criteria'></include>
 </select>
 
+<!-- 전체조회(페이징, 검색) -->
+<select id="selectEmp" resultType="empVO">
+	SELECT *
+	FROM   (
+	    SELECT /*+INDEX_DESC (EMPLOYEES EMP_EMP_ID_PK)*/
+	    	   ROWNUM RN, E.* 
+	    FROM   EMPLOYEES E
+	    <include refid='criteria'></include>
+	) B
+	WHERE RN BETWEEN #{first} AND #{last}
+</select>
+
+<resultMap type="empVO" id="empMap">
+	<association property="deptVO" column="DEPARTMENT_ID" javaType="DeptVO" select="selectDeptById"/>
+</resultMap>
+	
+<select id="selectDeptById" resultType="deptVO">
+	SELECT DEPARTMENT_ID,
+		   DEPARTMENT_NAME,
+		   MANAGER_ID,
+	       LOCATION_ID
+	FROM   DEPARTMENTS
+	WHERE  DEPARTMENT_ID = #{departmentId}
+</select>	
+	
 <!-- 단건조회 -->
-<select id="selectEmpById" parameterType="long" resultType="empVO">   
-		SELECT EMPLOYEE_ID,
-				FIRST_NAME,
-				LAST_NAME,
-				EMAIL,
-				PHONE_NUMBER,
-				HIRE_DATE,
-				JOB_ID,
-				SALARY,
-				COMMISSION_PCT,
-				MANAGER_ID,
-				DEPARTMENT_ID
-		FROM EMPLOYEES
-		WHERE EMPLOYEE_ID = #{employeeId}
-	</select>
+<select id="selectEmpById" resultMap="empMap" parameterType="Long">
+	SELECT EMPLOYEE_ID,
+		   FIRST_NAME,
+		   LAST_NAME,
+		   EMAIL,
+		   PHONE_NUMBER,
+		   HIRE_DATE,
+		   JOB_ID,
+		   SALARY,
+		   COMMISSION_PCT,
+		   MANAGER_ID,
+		   DEPARTMENT_ID
+	  FROM EMPLOYEES
+	 WHERE EMPLOYEE_ID = #{employeeId}
+</select>
 
-
-<!--  등록 -DB제약조건과 필수입력값 주의-->
-<insert id ="insertEmp"> 
+<!-- 등록 -->
+<insert id="insertEmp">
 	INSERT INTO EMPLOYEES (
-	             EMPLOYEE_ID,
-				 FIRST_NAME,
-				 LAST_NAME,
-				 EMAIL,
-				 PHONE_NUMBER,
-				 HIRE_DATE,
-				 JOB_ID,
-				 SALARY,
-				 COMMISSION_PCT,
-				 MANAGER_ID,
-				 DEPARTMENT_ID)
+			     EMPLOYEE_ID,
+			     FIRST_NAME,
+			     LAST_NAME,
+			     EMAIL,
+			     PHONE_NUMBER,
+			     HIRE_DATE,
+			     JOB_ID,
+			     SALARY,
+			     COMMISSION_PCT,
+			     MANAGER_ID,
+			     DEPARTMENT_ID
+	)
 	VALUES (
-	           #{ employeeId},
-	           #{firstName},
-	           #{lastName},
-	           #{email},
-	           #{phoneNumber},
-	           #{hireDate},
-	           #{jobId},
-	           #{salary},
-	           #{commissionPct},
-	           #{managerId},
-	           #{departmentId}
-	        )
+				#{employeeId},
+				#{firstName},
+				#{lastName},
+				#{email},
+				#{phoneNumber},
+				#{hireDate},
+				#{jobId},
+				#{salary},
+				#{commissionPct},
+				#{managerId},
+				#{departmentId}
+	)
 </insert>
+
 </mapper>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.board.mapper.BoardMapper">
+
+<sql id="criteria">
+	<where>
+		<if test="title != null">
+	    	UPPER(title) LIKE '%' || UPPER(#{title}) || '%'
+	    </if>
+	    <if test="bno != null">
+	    	 AND BNO = #{bno}
+	    </if>
+	</where>
+</sql>
+
+<!-- 건수조회 -->
+<select id="selectCount" resultType="Long">
+	SELECT count(*)
+	FROM   TBL_BOARD
+	<include refid='criteria'></include>
+</select>
+
+
+<!-- 전체조회 -->
+<select id="selectBoard" resultType="boardVO">
+	SELECT *
+	FROM   (
+	    SELECT /*+INDEX_DESC (TBL_BOARD PK_BOARD)*/
+	    	   ROWNUM RN, T.* 
+	    FROM   TBL_BOARD T
+	    <include refid='criteria'></include>
+	) B
+	WHERE RN BETWEEN #{first} AND #{last}
+</select>
+
+<!-- 단건조회 -->
+<select id="selectBoardByBno" resultType="replyVO" parameterType="Long">
+	SELECT RNO,
+		   BNO,
+		   REPLY,
+		   REPLYER,
+		   REPLYDATE,
+		   UPDATEDATE
+	FROM   TBL_REPLY
+	WHERE  BNO = #{bno}
+</select>
+</mapper>

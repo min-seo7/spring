@@ -1,26 +1,20 @@
 package com.example.demo.emp.mapper;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
-@Mapper 
-//@Mapper의 역할: 인터페이스 구현클래스를 생성(싱글톤)해서 스츠링 컨테이너 빈 등록
-public interface EmpMapper {  //EmpMapper.xml과 인터페이스 이름 동일하게 일치
-	//2)
-	//전체조회
-	List<EmpVO> selectEmp();  //매퍼의 result타입과 반환입일치
-	//단건조회
-	EmpVO selectEmpById(Long employeeId); //이릅은 ㅡmapper.xml id이름과 동일하게 해줘야함. 
-	//등록(등록시 DB제약조건 주의!!!)
-	int insertEmp(EmpVO empVO); //등록된 건수로 받으면 됨. or void나
-	//수정
+import com.example.demo.emp.service.EmpVO;
+
+@Mapper // 인터페이스 구현클래스를 생성(싱글톤)해서 스프링 컨테이너 빈 등록
+public interface EmpMapper {
+	// 건수조회
+	Long selectCount(EmpVO empVO);
+	// 전체조회
+	List<EmpVO> selectEmp(EmpVO empVO);
+	// 단건조회
+	EmpVO selectEmpById(Long employeeId);
+	// 등록
+	int insertEmp(EmpVO empVO);
 	
-	//삭제
-	
-	
-	//1)
-	//List<Map<String, object>> selectEmp();
-	//각 행을 LIST로 묶고, 행은 MAP으로 <키, 밸류>형식
 }
