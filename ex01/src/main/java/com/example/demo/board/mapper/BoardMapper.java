@@ -13,8 +13,10 @@ public interface BoardMapper {
 	Long selectCount(BoardVO boardVO);
 	// 전체조회
 	List<BoardVO> selectBoard(BoardVO boardVO);
-	// 단건조회
-	List<ReplyVO> selectBoardByBno(Long bno);
+	// 게시글 단건조회
+	BoardVO selectBoardByBno(Long bno);
 	//등록
 	int insertBoard(BoardVO boardVO);
+	//댓글조회
+	List<ReplyVO> selectReply(Long bno);
 }

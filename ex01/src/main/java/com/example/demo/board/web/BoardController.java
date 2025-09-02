@@ -13,7 +13,7 @@ import com.example.demo.common.Paging;
 @Controller
 public class BoardController {
 	
-	@Autowired BoardMapper boardMapper;
+	@Autowired BoardMapper boardMapper; //인터페이스 주입
 	
 	@GetMapping("boardList")
 	public String BoardList(Model model, BoardVO boardVO, Paging paging) {
@@ -21,22 +21,16 @@ public class BoardController {
 		paging.setPageUnit(5);
 		boardVO.setFirst(paging.getFirst());
 		boardVO.setLast(paging.getLast());
-		
+		                 // (View 지정,  DB 결과 (인터페이스 -> mapper.xml SQL 실행))
 		model.addAttribute("boardList", boardMapper.selectBoard(boardVO));
-		return "boardList";   //http://localhost/replyList?bno=1
+		return "boardList";  // View에 전달
 	}
 	
 	@GetMapping("board")
-	public String ReplyList(Model model, @RequestParam("bno") Long bno) {
-		model.addAttribute("board", boardMapper.selectBoardByBno(bno));
-		return "board";   //http://localhost/replyList?bno=1
+	public String Board(Model model, @RequestParam("bno") Long bno) {
+		model.addAttribute("board", boardMapper.selectBoardByBno(bno));  // 단일 게시글
+		model.addAttribute("replyList", boardMapper.selectReply(bno)); // 댓글 리스트
+		return "board";
 	}
-//	
-//	@GetMapping("replyList")
-//	public String ReplyList(Model model, @RequestParam("bno") Long bno) {
-//		model.addAttribute("replyList", boardMapper.selectBoardByBno(bno));
-//		return "replyList";   //http://localhost/replyList?bno=1
-//	}
-//	
 	
 }

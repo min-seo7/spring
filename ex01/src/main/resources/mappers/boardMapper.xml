@@ -34,15 +34,27 @@
 </select>
 
 <!-- 단건조회 -->
-<select id="selectBoardByBno" resultType="replyVO" parameterType="Long">
-	SELECT RNO,
-		   BNO,
-		   REPLY,
-		   REPLYER,
-		   REPLYDATE,
-		   UPDATEDATE
-	FROM   TBL_REPLY
+<select id="selectBoardByBno" resultType="boardVO" parameterType="Long">
+	SELECT bno,
+           title,
+           content,
+           writer,
+           regdate,
+           updatedate
+	FROM   tbl_board
 	WHERE  BNO = #{bno}	
+</select>
+
+<!-- 댓글조회 -->
+<select id="selectReply" resultType="replyVO" parameterType="Long">
+	SELECT rno,
+		   bno,
+		   reply,
+		   replyer,
+		   replydate,
+		   updatedate
+	FROM   tbl_reply
+	WHERE  BNO = #{bno}
 </select>
 
 <!-- 등록 -->
