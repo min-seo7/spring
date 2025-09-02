@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.board.mapper.ReplyMapper">
+
+<insert id="insert">
+	<selectKey keyProperty="rno" resultType="long" order="BEFORE">
+	     	SELECT  seq_reply.nextval
+	     	FROM dual
+	</selectKey> <!-- selectKey를 먼저실행해서 시퀀스 받은 후 insert --> 
+	insert into tbl_reply (
+	  rno, 
+	  bno, 
+	  reply, 
+	  replyer
+	)
+	values (
+	  #{rno},
+	  #{bno}, 
+	  #{reply}, 
+	  #{replyer}
+	)
+
+</insert>
+
+<!-- 단건조회 -->
+<select id="read" resultType="ReplyVO">
+
+	select * 
+	  from tbl_reply 
+	 where rno = #{rno}
+
+</select>
+
+<!-- 댓글삭제 -->
+<delete id="delete">
+
+	delete from tbl_reply where rno = #{rno}
+
+</delete>
+
+<!-- 수정 -->
+<update id="update">
+
+	update tbl_reply set 
+	       reply = #{reply},
+	       updatedate = sysdate 
+	 where rno = #{rno}
+
+</update>
+
+<!-- 해당 게시글의 리플데이터 가지고 옴.-->
+<select id="getList" resultType="ReplyVO">
+
+	<![CDATA[
+	 select  rno, bno, reply, replyer, replydate, updatedate
+	   from (
+			    select /*+INDEX(tbl_reply idx_reply) */ 
+			           rownum rn,  
+			           rno, 
+			           bno, 
+			           reply, 
+			           replyer, 
+			           replyDate, 
+			           updatedate
+			      from tbl_reply
+			     where bno =  #{bno}
+			       and rno > 0
+			       and rownum <= #{last} 
+		     ) 
+	 where rn >= #{first}
+	]]>
+
+</select>
+
+
+<select id="getCountByBno" resultType="int">
+	<![CDATA[
+	select count(rno) 
+	  from tbl_reply 
+	 where bno = #{bno}
+	]]>
+</select>
+
+</mapper>

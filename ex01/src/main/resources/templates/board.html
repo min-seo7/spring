@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body>
+  <!-- 게시글 단건조회 -->
+    <h1>게시글정보</h1>
+    <table class="table">
+      <tr>
+        <td>게시글번호</td>
+        <td th:text="${board.bno}"></td>
+      </tr>
+      <tr>
+        <td>이름</td>
+        <td>[[${board.writer}]]</td>
+      </tr>
+      <tr>
+        <td>급여</td>
+        <td>[[${board.content}]]</td>
+      </tr>
+      <tr>
+        <td>입사일자</td>
+        <td>[[${board.regDate}]</td>
+      </tr>
+      <tr>
+        <td>부서명</td>
+        <td>[[${board.updateDate}]</td>
+      </tr>
+    </table>
+    <!-- 게시글 단건조회 끝 -->
+    <div id="replyList"></div>
+    <!-- 댓글 시작 -->
+    <!-- 댓글 끝 -->
+    
+    <!-- 댓글 등록시작 -->
+    <form name="replyForm">
+    	<input name="reply">
+    	<input name="replyer">
+    	<input name="bno" type="hidden" th:value="${board.bno}"> <!-- ${}는 th로 써줘야하니까 th:vlaue임 -->
+    	<button type="button" class="btnReplyInsert">댓글저장</button>
+    </form>
+    <!-- 댓글 등록끝 -->
+  </body>
+  
+  <script>
+  replyInsert();
+  
+  /*-------------------------------------
+  등록 버튼 이벤트 지정
+  ---------------------------------------*/	
+  const url = "/reply";
+  
+  function replyInsert(){
+  	document.querySelector(".btnReplyInsert").addEventListener("click", function(){
+
+  		//파라미터 만들기
+  		const reply = replyForm.reply.value;
+  		const replyer = replyForm.replyer.value;
+  		const bno = replyForm.bno.value;
+  		const param = {reply, replyer, bno}  // 변수명과 필드명이 일치하면 생략가능. {reply : reply, replyer: replyer}
+  		
+  		//등록 요청  (Controller에 정의된 것과 일치 시켜줘야함.)
+  		fetch(url, { //controller의 주소랑도 동일해야 함.   
+  			method:"post",  //contrlller에 작성된 PostMapping or GetMapping이랑 일치시쳐줘야하고 
+  			headers: {
+  			      "Content-Type": "application/json",
+  			      // 'Content-Type': 'application/x-www-form-urlencoded',
+  			    },
+  			body : JSON.stringify(param), //const const param = {reply, replyer, bno}을 JSON으로 보냄. 
+  		})
+  		.then( result => result.text() )
+  		.then ( result => alert(result) ) 
+  		//.then( result => replyList() )
+  	})
+  } 
+  
+  
+  </script>
+</html>

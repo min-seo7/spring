@@ -11,10 +11,10 @@ import com.example.demo.board.service.ReplyVO;
 public interface BoardMapper {
 	// 건수조회
 	Long selectCount(BoardVO boardVO);
-	
 	// 전체조회
 	List<BoardVO> selectBoard(BoardVO boardVO);
-	
 	// 단건조회
 	List<ReplyVO> selectBoardByBno(Long bno);
+	//등록
+	int insertBoard(BoardVO boardVO);
 }

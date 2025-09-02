@@ -42,6 +42,31 @@
 		   REPLYDATE,
 		   UPDATEDATE
 	FROM   TBL_REPLY
-	WHERE  BNO = #{bno}
+	WHERE  BNO = #{bno}	
 </select>
+
+<!-- 등록 -->
+<insert id="insertBoard">
+    INSERT INTO tbl_board (
+    	             BNO,
+                     TITLE,
+                     CONTENT,
+                     WRITER,
+		             REGDATE,
+		             UPDATEDATE     
+    )
+    VALUES (
+             #{BNO},
+			 #{TITLE},
+			 #{CONTENT},
+			 #{WRITER},
+			 #{REGDATE},
+			 #{UPDATEDATE},
+    )
+</insert>
+
+
+<!-- 수정 -->
+<!-- 삭제 -->	
+
 </mapper>

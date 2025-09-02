@@ -23,12 +23,20 @@ public class BoardController {
 		boardVO.setLast(paging.getLast());
 		
 		model.addAttribute("boardList", boardMapper.selectBoard(boardVO));
-		return "boardList";
+		return "boardList";   //http://localhost/replyList?bno=1
 	}
 	
-	@GetMapping("replyList")
+	@GetMapping("board")
 	public String ReplyList(Model model, @RequestParam("bno") Long bno) {
-		model.addAttribute("replyList", boardMapper.selectBoardByBno(bno));
-		return "replyList";
+		model.addAttribute("board", boardMapper.selectBoardByBno(bno));
+		return "board";   //http://localhost/replyList?bno=1
 	}
+//	
+//	@GetMapping("replyList")
+//	public String ReplyList(Model model, @RequestParam("bno") Long bno) {
+//		model.addAttribute("replyList", boardMapper.selectBoardByBno(bno));
+//		return "replyList";   //http://localhost/replyList?bno=1
+//	}
+//	
+	
 }

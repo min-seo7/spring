@@ -2,6 +2,10 @@ package com.example.demo.board.service;
 
 import java.util.Date;
 
+import org.apache.ibatis.annotations.Mapper;
+
+import com.example.demo.common.SearchVO;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,7 +15,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReplyVO {
+@Mapper
+public class ReplyVO extends SearchVO{
 	private Long rno;
 	private Long bno;
 	private String reply;
