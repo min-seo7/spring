@@ -14,12 +14,17 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import com.example.demo.ex1.UserVO;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import reactor.core.publisher.Mono;
 
+@Tag(name = "회원관리 API", description ="게임사이트 회원 가입" ) //Tag로 름이랑 설명
 @RequestMapping("/api")
 @RestController   //@Controlller + @ResponseBody
 public class Ex2Controller { 
 
+	@Tag(name = "회원관리 API" )  //이름지정
+	@Operation(summary = "회원조회")//메소드 설명
 	//UserVO 단건조회   ->  return 타입이 userVO
 	@GetMapping("/rest1")
 	public UserVO getMethodName() {

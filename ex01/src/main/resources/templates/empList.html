@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">  <!--  layout:decorate="~{layout/layout}에 폴더명/파일명 경로작성. -->
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 <style>
 .salaryred {
 	color: red
@@ -28,7 +28,7 @@
 </script>
 
 </head>
-<body>
+<body  layout:fragment="content"> <!-- 레이아웃 적용위치 -->
 	<h1>사원 목록</h1>
 
 	<!--  검색 폼 시작 -->
@@ -95,6 +95,10 @@
 	  </ul>
 	</nav>
 	<!-- 페이징 종료 -->
+	<script  th:inline="javascript">   // th:inline="javascript" 자바스크립트 객체를 볼 수 있음. 
+	  //let list = [[${empList}]]
+	</script>
+	
 
 </body>
 </html>
