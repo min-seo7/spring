@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.security.mapper.UserMapper">
+
+	<resultMap type="UserVO" id="userMap">
+		<id column="id"  property="id"/>
+		<result column="password"  property="password"/>
+		<collection property="roles"
+		            ofType="RoleVO"   
+		            select="getRole"
+		            column="id"
+		></collection>    
+	</resultMap>
+	
+	<!-- 전체 흐름 개요
+        요청: getUser 라는 id를 가진 MyBatis 쿼리를 호출하면서 loginId 파라미터를 넘긴다.
+        주 쿼리: t_user 테이블에서 단건 유저 정보를 조회한다.
+        매핑: resultMap="userMap" 을 통해 결과를 UserVO에 매핑한다.
+        서브쿼리: 유저의 id를 기반으로 getRole 이라는 쿼리를 서브로 실행하여, 해당 유저의 권한 정보 (List<RoleVO>)를 조회한다.
+        최종 결과: UserVO 객체 하나에 roles 리스트가 포함된 상태로 반환된다. -->
+	
+	<!-- 단건조회 -->
+	<select id="getUser" resultMap="userMap">
+	select ID
+			,LOGIN_ID
+			,PASSWORD
+			,FULL_NAME
+			,DEPT_NAME
+	  from t_user
+	 where login_id = #{loginId}
+	</select>
+	 
+	<!-- 권한조회 -->
+	<select id="getRole" resultType="RoleVO">
+    select role_name
+	  from t_user_role u
+	  join t_role r on (u.ROLE_ID = r.id )
+	 where id = #{id}
+	 </select>
+</mapper>

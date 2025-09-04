@@ -94,7 +94,8 @@ body {
     </div>
     <div class="card">
 	   <ul>
-	     <li><a th:href ="@{/empList}">사원관리</a></li>	<!-- properties에서 context-path 지정된 경우, th:href ="@{/empList}" 작성해서 통합지정된 경로 없이 바로 사용가능.  -->
+	    <li><a th:href ="@{/home}">사원관리</a></li>
+	     <li><a th:href ="@{/emp/empList}">사원관리</a></li>	<!-- properties에서 context-path 지정된 경우, th:href ="@{/empList}" 작성해서 통합지정된 경로 없이 바로 사용가능.  -->
 	     <li><a th:href ="@{/boardList}">부서관리</a></li>	  
 	   </ul>
     </div>

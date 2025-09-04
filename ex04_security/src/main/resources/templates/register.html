@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form>
+	<input type="text" th:name="${_csrf.parameterName}" th:vlue="${_csrf.token}">
+	</form>
+	[[${_csrf.parameterName}]]<hr>
+	<hr>	
+	
+<script th:inline="javascript">
+	let csrfHeaderName = "[[${_csrf.headerName}]]";
+	let csrfToken = "[[${_csrf.token}]]";
+</script>
+</body>
+</html>

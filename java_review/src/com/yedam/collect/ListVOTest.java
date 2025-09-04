@@ -17,8 +17,8 @@ public class ListVOTest {
 	public void test1() {
 		
 		List<EmpVO> list = new ArrayList<>();
-		list.add(new EmpVO(100, "홍길동"));
-		list.add(new EmpVO(101, "박길동"));
+		list.add(new EmpVO(100, "홍길동", 0));
+		list.add(new EmpVO(101, "박길동", 0));
 		//empno, ename, dept
 		
 		//이름만 출력가능한 반복문
@@ -28,5 +28,4 @@ public class ListVOTest {
 			System.out.println(list.get(i).getEname());
 		}
 	}
-
 }
