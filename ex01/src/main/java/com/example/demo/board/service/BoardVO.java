@@ -20,4 +20,5 @@ public class BoardVO extends SearchVO {
 	private String writer;
 	private Date regDate;
 	private Date updateDate;
+	private String attach;
 }

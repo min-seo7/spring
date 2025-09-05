@@ -18,20 +18,20 @@ public class EmpController {
 	@Autowired EmpMapper empService;   //컨트롤러 -> 서비스 -> 매퍼 
 	
 	
-	@GetMapping("empList")
+	@GetMapping("/empList")
 	public String empList(Model model, EmpVO empVO, Paging paging) {
 		paging.setTotalRecord(empService.selectCount(empVO));
 		paging.setPageUnit(5);
 		empVO.setFirst(paging.getFirst());
 		empVO.setLast(paging.getLast());
 		model.addAttribute("empList", empService.selectEmp(empVO));
-		return "empList"; // empList.html
+		return "emp/empList"; // html 파일경로
 	}
 	
-	@GetMapping("emp")
+	@GetMapping("/emp")
 	public String emp(Model model, @RequestParam("employeeId") Long employeeId) {
 		model.addAttribute("emp", empService.selectEmpById(employeeId));
-		return "emp"; // emp.html
+		return "emp/emp"; // html 파일경로
 	}
 	
 	//컨트롤러 -> 매퍼 방식 

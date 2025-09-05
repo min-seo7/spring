@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.board.mapper.BoardMapper">
 
+<!-- #{bno} vo랑 대소문자 일치시켜야 함.  -->
 <sql id="criteria">
 	<where>
 		<if test="title != null">
@@ -40,7 +41,8 @@
            content,
            writer,
            regdate,
-           updatedate
+           updatedate, 
+           attach
 	FROM   tbl_board
 	WHERE  BNO = #{bno}	
 </select>
@@ -64,16 +66,16 @@
                      TITLE,
                      CONTENT,
                      WRITER,
-		             REGDATE,
-		             UPDATEDATE     
+					 ATTACH
+		                
     )
     VALUES (
-             #{BNO},
-			 #{TITLE},
-			 #{CONTENT},
-			 #{WRITER},
-			 #{REGDATE},
-			 #{UPDATEDATE},
+             seq_board.nextval,
+			 #{title},
+			 #{content},
+			 #{writer},
+			 #{attach}
+
     )
 </insert>
 

@@ -37,6 +37,14 @@
         <td>수정일</td>
         <td th:text="${ #dates.format(board.updateDate, 'yyyy-MM-dd')}"></td>
       </tr>
+      <tr>
+        <td>첨부파일</td>
+        <td>
+            <a th:href="|/filedown/${board.attach}|" th:text="${board.attach}"></a>  <!-- 파일다운 -->
+            <img th:src="|/upload/${board.attach}|">   <!-- 이미지노출 -->
+        </td>
+        <td></td>
+      </tr>
     </table>
     <!-- 게시글 단건조회 끝 -->
     </div> 

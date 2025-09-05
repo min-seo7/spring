@@ -30,7 +30,7 @@ public class WebSecurityConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 			.authorizeHttpRequests((requests) -> requests
-				.requestMatchers("/", "/home").permitAll() //permitAll 모두 허용. 
+				.requestMatchers("/", "/home", "/upload/**", "/board/**").permitAll() //permitAll 모두 허용. [허용할 경로들 추가해주면됨.]
 				.requestMatchers("/emp/**").hasRole("ADMIN")
 				.anyRequest().authenticated() //모든 요청은 인증된 사용자만 접근 가능함. [권한(Role)" 확인이 아니라, 로그인(인증, Authentication)이 되었는지만 확인] 
 				//==>authenticated() → 로그인만 되어 있으면 됨. cf)hasRole("ADMIN") → 로그인도 되어 있고, "ADMIN" 권한을 가진 사용자만 접근 가능.
@@ -40,7 +40,7 @@ public class WebSecurityConfig {
 				.successHandler(authenticationSuccessHandler())  //로그인이 성공하면 어드민 페이지로 이동. 
 			)
 		    .logout((logout) -> logout.permitAll());
-		//http.csrf(csrf -> csrf.disable());//csrf 사용안하는 걸로 세팅. (디폴트는 토큰사용이라, 미사용시 문장추가.)
+		http.csrf(csrf -> csrf.disable());//csrf 사용안하는 걸로 세팅. (디폴트는 토큰사용이라, 미사용시 문장추가.)
 		
 		
 		http.exceptionHandling(ex -> ex.accessDeniedHandler(deniedHandler())); 
