@@ -14,7 +14,7 @@ public class Customer {
     //생성자
 	public Customer() {};
 	
-	public Customer(String name, String phone) {  //생성자 지정해서 만들때, 기본생성자도 default로 필수! 
+	public Customer(String name, String phone) {  //생성자 지정해서 만들때, 기본생성자도
 		super();
 		this.name = name;
 		this.phone = phone;

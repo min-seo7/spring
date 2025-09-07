@@ -5,11 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@Controller //aka.노드의 라우터랑 비슷
+@Controller 
 public class HomeController {
 
-	@Autowired //
-	Animal animal;  //1. 선언
+	@Autowired 
+	Animal animal;  
 	
 	@GetMapping("/")
 	@ResponseBody

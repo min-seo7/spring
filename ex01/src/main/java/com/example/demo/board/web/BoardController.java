@@ -45,10 +45,18 @@ public class BoardController {
 	
 	//단건조회
 	@GetMapping("board")
-	public String Board(Model model, @RequestParam("bno") Long bno) {
-		model.addAttribute("board", boardService.selectBoardByBno(bno));  // 단일 게시글
-		model.addAttribute("replyList", boardService.selectReply(bno)); // 댓글 리스트
-		return "board/board";
+	public String Board(Model model, @RequestParam("bno") Long bno) {   //Model은 Controller에서 View로 데이터를 전달할 때 사용하는 객체  [model.addAttribute("이름", 데이터) 형태로 사용]
+		model.addAttribute("board", boardService.selectBoardByBno(bno));  // 단일 게시글[**"board"**라는 이름으로 게시글 데이터를 view (템플릿)에 전달]
+		model.addAttribute("replyList", boardService.selectReply(bno)); // 댓글 리스트[**"replyList"**라는 이름으로 댓글 목록 데이터를 전달]
+		return "board/board"; 
+		
+		/*
+		  board/board.html에서 <h1 th:text="${board.title}">제목</h1> or  
+		   <li th:each="reply : ${replyList}">
+           <span th:text="${reply.replyer}">작성자</span> 
+           <span th:text="${reply.reply}">내용</span>  데이터를 꺼내씀. 
+		 */
+	    
 	}
 	
 	//게시글 첨부파일 등록로직 1)등록페이지 이동 2)등록처리  =>get방식은 이동 & post는 등록으로 처리

@@ -10,7 +10,7 @@ import com.example.demo.repository.CustomerRepository;
 @Controller
 public class CustomerController {
 
-	@Autowired CustomerRepository customerRepository;  //수없용이라 service제외 바로 repository(aka.mapper)주입
+	@Autowired CustomerRepository customerRepository;  //수업용이라 service제외 바로 repository(aka.mapper)주입
 	
 	@GetMapping("list")
 	public String list(Model model) {

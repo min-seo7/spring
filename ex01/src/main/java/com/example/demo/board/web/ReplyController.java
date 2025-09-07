@@ -20,7 +20,7 @@ public class ReplyController {
 	
 	//등록
 	@PostMapping("/reply")
-	public int insert(@RequestBody ReplyVO reply) {
+	public int insert(@RequestBody ReplyVO reply) {  //@RequestBody는 요청 본문(JSON)을 자바 객체(ReplyVO)로 바꿔주는 역할
 		int result = replyMapper.insert(reply);
 		return result;
 	}
@@ -37,9 +37,9 @@ public class ReplyController {
 		return "";
 		}
 	
-	//전체조회
+	//전체조회(해당 게시글의 전체 댓글목록 조회)
 	@GetMapping("/board/{bno}/reply")
-	public List<ReplyVO> list(@PathVariable Long bno, ReplyVO vo) {
+	public List<ReplyVO> list(@PathVariable Long bno, ReplyVO vo) {  //@PathVariable Long bno를 통해 URL의 {bno} 값이 메서드 파라미터로 들어옴.
 		vo.setBno(bno);
 		vo.setFirst(1);
 		vo.setLast(100);
