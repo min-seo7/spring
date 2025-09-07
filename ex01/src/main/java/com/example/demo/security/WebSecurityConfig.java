@@ -54,26 +54,4 @@ public class WebSecurityConfig {
 		return new CustomAccessDeniedHandler();
 	}
 	
-	//@Bean
-//	public UserDetailsService userDetailsService() {  //별도 DB작업없이 로그인 가능하도록
-//		
-//		//권한: user 
-//		UserDetails user =
-//			 User.withDefaultPasswordEncoder()
-//				.username("u01")
-//				.password("1234")
-//				.roles("USER")
-//				.build();
-//		
-//		//권한: admin
-//		UserDetails admin =
-//				 User.withDefaultPasswordEncoder()
-//					.username("a01")
-//					.password("1234")
-//					.roles("ADMIN", "HR") //여러 권한도 지정가능.
-//					.build();
-//		
-//		return new InMemoryUserDetailsManager(user, admin);
-//	}
-
 }

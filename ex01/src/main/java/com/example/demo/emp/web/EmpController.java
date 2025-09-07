@@ -11,7 +11,7 @@ import com.example.demo.common.Paging;
 import com.example.demo.emp.mapper.EmpMapper;
 import com.example.demo.emp.service.EmpVO;
 
-@RequestMapping("/emp")
+@RequestMapping("/emp")  //클래스 레벨에 선언되어 모든 메서드 경로 앞에 자동으로 /emp가 붙음.. 
 @Controller
 public class EmpController {
 	

@@ -9,6 +9,10 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+/*
+ * 접근거부 핸들러
+ */
+
 //WebSecurityConfig 여기서 빈 등록함. 
 public class CustomAccessDeniedHandler implements AccessDeniedHandler{
 

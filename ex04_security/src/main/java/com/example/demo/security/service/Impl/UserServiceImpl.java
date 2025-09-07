@@ -12,6 +12,11 @@ import com.example.demo.security.service.UserVO;
 
 import lombok.RequiredArgsConstructor;
 
+
+/*
+ * 로그인 시 DB에서 유저를 꺼내오는 로직 [메퍼(interface)를 주입해줘야함.]
+ */
+
 @RequiredArgsConstructor //메퍼주입
 @Service  //빈등록
 public class UserServiceImpl implements UserService, UserDetailsService {

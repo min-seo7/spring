@@ -10,6 +10,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import lombok.Data;
 
+/*
+ * Spring Security가 인식할 수 있는 사용자 정보
+ */
+
 @Data
 public class CustomUserDetail implements UserDetails {
 

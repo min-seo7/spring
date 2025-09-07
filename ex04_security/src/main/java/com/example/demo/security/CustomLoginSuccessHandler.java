@@ -13,6 +13,9 @@ import com.example.demo.security.service.UserVO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+/*
+ * 로그인성공 핸들러 
+ */
 
 //WebSecurityConfig에서 bean등록해줌. 
 public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler{
@@ -30,6 +33,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler{
 		
 		//username, role
 		List<String> roleNames = new ArrayList<>();		  //여러개 role이 가능해서 list로 받음. 
+		
 		auth.getAuthorities().forEach( authority -> { 
 			roleNames.add( authority.getAuthority());
 		}  );		

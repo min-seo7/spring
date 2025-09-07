@@ -14,6 +14,10 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
+/*
+ * 시큐리티 필터 체인 설정[보안 메인 설정파일], 로그인성공여부에 따라 경로 분기
+ */
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
@@ -29,8 +33,9 @@ public class WebSecurityConfig {
 		return new CustomLoginSuccessHandler();
 	}
 	
+		
 	
-	@Bean
+	@Bean   
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 			.authorizeHttpRequests((requests) -> requests
@@ -59,7 +64,7 @@ public class WebSecurityConfig {
 	}
 	
 	//@Bean
-//	public UserDetailsService userDetailsService() {  //별도 DB작업없이 로그인 가능하도록
+//	public UserDetailsService userDetailsService() {  //별도 DB작업없이 로그인 가능하도록  
 //		
 //		//권한: user 
 //		UserDetails user =
