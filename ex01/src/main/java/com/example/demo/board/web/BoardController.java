@@ -44,7 +44,7 @@ public class BoardController {
 	}
 	
 	//단건조회
-	@GetMapping("board")
+	@GetMapping("board") 
 	public String Board(Model model, @RequestParam("bno") Long bno) {   //Model은 Controller에서 View로 데이터를 전달할 때 사용하는 객체  [model.addAttribute("이름", 데이터) 형태로 사용]
 		model.addAttribute("board", boardService.selectBoardByBno(bno));  // 단일 게시글[**"board"**라는 이름으로 게시글 데이터를 view (템플릿)에 전달]
 		model.addAttribute("replyList", boardService.selectReply(bno)); // 댓글 리스트[**"replyList"**라는 이름으로 댓글 목록 데이터를 전달]

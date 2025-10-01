@@ -1,0 +1,105 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="emp" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fb1762a4-9aa3-4a04-a252-5a90f54c8b54">
+	<property name="com.jaspersoft.studio.data.sql.tables" value="IkVNUExPWUVFUyIgQVMgLDExOCw4MyxjZTE5NGI2Yy0wODQ3LTQyYmYtODAyNi0wZWE4MjQ0NTk4&#xa;ZGU7"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="257"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="733"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="hr"/>
+	<style name="filed_style">
+		<pen lineWidth="2.0" lineStyle="Solid"/>
+		<box>
+			<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+			<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+			<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="P_EMPNAME" class="java.lang.String"/>
+	<query language="SQL"><![CDATA[SELECT "EMPLOYEE_ID" "employeeId",
+	"FIRST_NAME"          "firstName",
+	"LAST_NAME"          "lastName",
+	"EMAIL"                  "email",
+	"PHONE_NUMBER"   "phoneNumber",
+	"HIRE_DATE"           "hireDate"
+FROM "EMPLOYEES"]]></query>
+	<field name="employeeId" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="employeeId"/>
+		<property name="com.jaspersoft.studio.field.label" value="employeeId"/>
+	</field>
+	<field name="firstName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="firstName"/>
+		<property name="com.jaspersoft.studio.field.label" value="firstName"/>
+	</field>
+	<field name="lastName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="lastName"/>
+		<property name="com.jaspersoft.studio.field.label" value="lastName"/>
+	</field>
+	<field name="email" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="email"/>
+		<property name="com.jaspersoft.studio.field.label" value="email"/>
+	</field>
+	<field name="phoneNumber" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="phoneNumber"/>
+		<property name="com.jaspersoft.studio.field.label" value="phoneNumber"/>
+	</field>
+	<field name="hireDate" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="hireDate"/>
+		<property name="com.jaspersoft.studio.field.label" value="hireDate"/>
+	</field>
+	<background splitType="Stretch"/>
+	<title height="79" splitType="Stretch">
+		<element kind="staticText" uuid="b9d70d99-00c8-4312-870d-a2437ff8beec" x="227" y="24" width="100" height="30" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Emp List]]></text>
+		</element>
+		<element kind="textField" uuid="b3c4ad23-1efd-4c2d-8543-7a28960c3c6e" x="32" y="60" width="100" height="17">
+			<expression><![CDATA[$P{P_EMPNAME}]]></expression>
+		</element>
+	</title>
+	<pageHeader height="35" splitType="Stretch"/>
+	<columnHeader height="43" splitType="Stretch">
+		<element kind="staticText" uuid="8090ac98-56f2-44b7-a4d6-e03802a73da4" x="0" y="0" width="95" height="30">
+			<text><![CDATA[employeeId]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ae3e3bd9-0862-4dbd-b025-d741c4da13a0"/>
+		</element>
+		<element kind="staticText" uuid="01956b03-dd83-403c-beaf-83eed07366a3" x="95" y="0" width="184" height="30">
+			<text><![CDATA[firstName]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0135b29b-8955-4b8e-b614-14751d7d8209"/>
+		</element>
+		<element kind="staticText" uuid="7e8d9e08-0f23-4ce6-aa9c-af211ec80bc2" x="279" y="0" width="92" height="30">
+			<text><![CDATA[email]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2e4709ca-f301-4f4f-9087-2b11ca22268a"/>
+		</element>
+		<element kind="staticText" uuid="8b6f7570-d408-416d-9c41-5db69da845da" x="371" y="0" width="92" height="30">
+			<text><![CDATA[phoneNumber]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ba4e2ceb-8be0-4a8d-8c02-8a420bfb137b"/>
+		</element>
+		<element kind="staticText" uuid="fae8b43b-f536-4824-ae32-4502c64b5104" x="463" y="0" width="92" height="30">
+			<text><![CDATA[hireDate]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d00ebc71-c080-4797-b90f-8d7da1157663"/>
+		</element>
+	</columnHeader>
+	<detail>
+		<band height="50" splitType="Stretch">
+			<element kind="textField" uuid="7768c012-4681-4825-aab8-4b8192fb4dba" x="0" y="0" width="95" height="30" style="filed_style">
+				<expression><![CDATA[$F{employeeId}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ae3e3bd9-0862-4dbd-b025-d741c4da13a0"/>
+			</element>
+			<element kind="textField" uuid="af5d55d1-c5a7-4c9e-8da7-814d5a8310b8" x="95" y="0" width="184" height="30" style="filed_style">
+				<expression><![CDATA[$F{firstName}.toUpperCase() + " " +$F{lastName}.toUpperCase()]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0135b29b-8955-4b8e-b614-14751d7d8209"/>
+			</element>
+			<element kind="textField" uuid="2b800c44-2f17-480a-a2ad-0a18da72e2fe" x="279" y="0" width="92" height="30" style="filed_style">
+				<expression><![CDATA[$F{email}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2e4709ca-f301-4f4f-9087-2b11ca22268a"/>
+			</element>
+			<element kind="textField" uuid="acd8f73b-c24f-41f8-9d64-1b0198f70229" x="371" y="0" width="92" height="30" style="filed_style">
+				<expression><![CDATA[$F{phoneNumber}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ba4e2ceb-8be0-4a8d-8c02-8a420bfb137b"/>
+			</element>
+			<element kind="textField" uuid="ea81a75f-14bf-436f-98b2-93a0a151bad5" x="463" y="0" width="92" height="30" style="filed_style">
+				<expression><![CDATA[$F{hireDate}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d00ebc71-c080-4797-b90f-8d7da1157663"/>
+			</element>
+			<element kind="line" uuid="a7761ef5-2d66-484c-9791-f7563b3b032e" x="0" y="35" width="555" height="1"/>
+		</band>
+	</detail>
+</jasperReport>

@@ -30,7 +30,7 @@ public class WebSecurityConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 			.authorizeHttpRequests((requests) -> requests
-				.requestMatchers("/", "/home", "/upload/**", "/board/**").permitAll() //permitAll 모두 허용. [허용할 경로들 추가해주면됨.]
+				.requestMatchers("/**", "/home", "/upload/**", "/board/**").permitAll() //permitAll 모두 허용. [허용할 경로들 추가해주면됨.]
 				.requestMatchers("/emp/**").hasRole("ADMIN")
 				.anyRequest().authenticated() //모든 요청은 인증된 사용자만 접근 가능함. [권한(Role)" 확인이 아니라, 로그인(인증, Authentication)이 되었는지만 확인] 
 				//==>authenticated() → 로그인만 되어 있으면 됨. cf)hasRole("ADMIN") → 로그인도 되어 있고, "ADMIN" 권한을 가진 사용자만 접근 가능.
